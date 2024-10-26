@@ -5,7 +5,7 @@
 
 import csv
 from math import ceil
-from typing import List, Tuple, TypedDict
+from typing import List, Tuple, Dict
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -50,16 +50,7 @@ class Server:
             return []
         return data[start:end]
 
-    Page_type = TypedDict('Page_type', {
-        'page_size': int,
-        'page': int,
-        'data': List[List],
-        'next_page': int | None,
-        'prev_page': int | None,
-        'total_pages': int,
-    })
-
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> Page_type:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """
         Retrieves a page of data in dictionary.
         """
